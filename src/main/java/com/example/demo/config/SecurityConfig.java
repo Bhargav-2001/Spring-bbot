@@ -19,7 +19,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Disable CSRF protection
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/password/**").permitAll() // Allow public access to password reset
+                        .requestMatchers("/api/password/**","/v3/api-docs/**","/swagger-ui/**").permitAll() // Allow public access to password reset
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
